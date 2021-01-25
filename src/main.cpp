@@ -1,4 +1,5 @@
 #include "ProcUtils.h"
+#include "TimeUtil.h"
 
 #define MEM_2G 2147483648L
 #define MIN_MILLI_SEC 60000
@@ -14,6 +15,7 @@ int main() {
             Sleep(5000);
             KillProcess(pid);
         }
+        cout << "Time:" << GetFormatTime() << "\n";
         cout << "-----" << "COUNT:" << count << "-----\n";
         Sleep(10 * MIN_MILLI_SEC);
     }

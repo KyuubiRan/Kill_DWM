@@ -4,4 +4,4 @@ project(FuckDWM)
 set(CMAKE_CXX_STANDARD 20)
 link_libraries(psapi.dll)
 
-add_executable(FuckDWM src/main.cpp src/Common.h src/ProcUtils.cpp src/ProcUtils.h)
+add_executable(FuckDWM src/main.cpp src/Common.h src/ProcUtils.cpp src/ProcUtils.h src/TimeUtil.h src/TimeUtil.cpp)
