@@ -90,7 +90,7 @@ bool KillProcess(const DWORD &dwPid, int exitCode) {
 bool KillProcess(const string &procName, int exitCode) {
     DWORD dwPid = 0;
     //查找进程并且获取pid 然后根据pid杀死进程
-    if (FindProcess(procName, dwPid)) return KillProcess(dwPid,exitCode);
+    if (FindProcess(procName, dwPid)) return KillProcess(dwPid, exitCode);
     //执行失败
     return false;
 }
@@ -123,7 +123,7 @@ double GetMemSizeByMb(const string &procName) {
 }
 
 double GetMemSizeByMb(const DWORD &dwPid) {
-    double size = GetMemSize(dwPid);
+    double size = GetMemSize(dwPid) / 1024.0 / 1024.0;
     cout << "Memory = " << size << " MB\n";
     return size;
 }
