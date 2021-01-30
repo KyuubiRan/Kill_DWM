@@ -76,7 +76,7 @@ bool FindProcess(const string &procName, DWORD &dwPid) {
     return false;
 }
 
-bool KillProcess(const DWORD &dwPid, int exitCode) {
+bool KillProcess(DWORD dwPid, int exitCode) {
     //打开进程
     HANDLE proc = OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwPid);
     //如果获取的进程为空
@@ -95,7 +95,7 @@ bool KillProcess(const string &procName, int exitCode) {
     return false;
 }
 
-UINT64 GetMemSize(const DWORD &dwPid) {
+UINT64 GetMemSize(DWORD dwPid) {
     PROCESS_MEMORY_COUNTERS pmc;
     UINT64 mem = 0;
     HANDLE hProc = OpenProcess(PROCESS_QUERY_INFORMATION, FALSE, dwPid);
@@ -122,7 +122,7 @@ double GetMemSizeByMb(const string &procName) {
     return size;
 }
 
-double GetMemSizeByMb(const DWORD &dwPid) {
+double GetMemSizeByMb(DWORD dwPid) {
     double size = GetMemSize(dwPid) / 1024.0 / 1024.0;
     cout << "Memory = " << size << " MB\n";
     return size;
