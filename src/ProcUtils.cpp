@@ -40,7 +40,7 @@ bool UpPrivilege() {
     return result;
 }
 
-bool FindProcess(const string &procName, DWORD &nPid) {
+bool FindProcess(const string &procName, DWORD &dwPid) {
     cout << "Start find proc.\n";
     TCHAR tszProcess[64] = {0};
     lstrcpy(tszProcess, _T(procName.c_str()));
@@ -63,9 +63,9 @@ bool FindProcess(const string &procName, DWORD &nPid) {
     //查找进程
     do {
         if (lstrcmp(ps.szExeFile, tszProcess) == 0) {
-            nPid = ps.th32ProcessID;
+            dwPid = ps.th32ProcessID;
             CloseHandle(hSnapshot);
-            cout << "Found proc: " << tszProcess << "\nPid = " << nPid << "\n";
+            cout << "Found proc: " << tszProcess << "\nPid = " << dwPid << "\n";
             return true;
         }
     } while (Process32Next(hSnapshot, &ps));
