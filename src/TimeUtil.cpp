@@ -10,16 +10,12 @@ unsigned long long GetCurrentSeconds() {
 }
 
 string GetFormatTime() {
-    time_t currentMillis = GetCurrentSeconds();
-    tm *time = localtime(&currentMillis);
+    time_t currentSec = GetCurrentSeconds();
+    tm *time = localtime(&currentSec);
     time->tm_year += 1900;
     time->tm_mon += 1;
-    string str;
-    str.append(to_string(time->tm_year)).append("-")
-            .append(to_string(time->tm_mon)).append("-")
-            .append(to_string(time->tm_mday)).append(" ")
-            .append(to_string(time->tm_hour)).append(":")
-            .append(to_string(time->tm_min)).append(":")
-            .append(to_string(time->tm_sec));
-    return str;
+    char tmp[64];
+    sprintf(tmp, "%04d-%02d-%02d %02d:%02d:%02d", time->tm_year, time->tm_mon, time->tm_mday,
+            time->tm_hour, time->tm_min, time->tm_sec);
+    return string(tmp);
 }
